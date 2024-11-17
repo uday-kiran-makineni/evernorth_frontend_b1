@@ -1,52 +1,66 @@
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap styles are available
-import styles from './Testimonials.module.css'; // Import your CSS module if needed
-
-const testimonialsData = [
-  {
-    id: 1,
-    name: 'John Doe',
-    image: 'src/landing/assets/im1.jpeg', // Replace with the actual image URL
-    text: 'This service has greatly improved my productivity! Highly recommend to everyone.',
-  },
-  {
-    id: 2,
-    name: 'Jane Smith',
-    image: 'src/landing/assets/im2.jpeg', // Replace with the actual image URL
-    text: 'I am extremely satisfied with the support I received. Thank you for your excellent service!',
-  },
-  {
-    id: 3,
-    name: 'Michael Johnson',
-    image: 'src/landing/assets/im3.jpeg', // Replace with the actual image URL
-    text: 'A fantastic experience from start to finish. I would use this service again!',
-  },
-];
 
 const Testimonials = () => {
   return (
-    <>
-    <hr />
-    <div className="container my-5">
-      <h2 className={styles.testTitle}>What Our Clients Say</h2>
-      <div className="row">
-        {testimonialsData.map((testimonial) => (
-          <div className="col-md-4 mb-4" key={testimonial.id}>
-            <div className={styles.testimonialCard}>
-              <div className="card-body">
-                <div className="d-flex align-items-center mb-3">
-                  <img src={testimonial.image} alt={testimonial.name} className={`rounded-circle me-3 ${styles.testimonialImage}`} />
-                  <h5 className={styles.cardTitle}>{testimonial.name}</h5>
-                </div>
-                <p className={styles.cardText}>{testimonial.text}</p>
-              </div>
-            </div>
-          </div>
-        ))}
+    <div style={styles.container}>
+      <div style={styles.textContainer}>
+        <h1 style={styles.heading}>
+          Innovation in health care means nothing if no one can afford it.
+        </h1>
+        <p style={styles.description}>
+          Evernorth brings the power of wonder and relentless innovation to create world-class pharmacy, care, and benefit solutions.
+          Our connected health services make the treatment, prediction, and prevention of health care’s most complex conditions easier and 
+          more accessible as we drive organizations and people forward.
+        </p>
+        <a href="#" style={styles.link}>See the Evernorth difference</a>
+      </div>
+      <div style={styles.imageContainer}>
+        <img 
+          src="https://res.cloudinary.com/dmdiia2yv/image/upload/v1731490878/family_together_u6w70h.avif" // Replace with the actual image URL or import statement
+          alt="Family smiling together"
+          style={styles.image}
+        />
       </div>
     </div>
-        <hr />
-    </>
   );
+};
+
+const styles = {
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '50px',
+    fontFamily: 'Arial, sans-serif',
+  },
+  textContainer: {
+    flex: 1,
+    paddingRight: '20px',
+  },
+  heading: {
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  description: {
+    fontSize: '1rem',
+    color: '#555',
+    lineHeight: '1.5',
+    margin: '20px 0',
+  },
+  link: {
+    color: '#0073e6',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+  },
+  imageContainer: {
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  image: {
+    width: '100%',
+    borderRadius: '10px',
+  },
 };
 
 export default Testimonials;

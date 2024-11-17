@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Header from './Header.jsx';
+import { useNavigate } from 'react-router-dom';
+import Headernn from '../landing/Headernn.jsx';
 import Footer from './Footer.jsx';
 import styles from './Signup.module.css';
-import { useNavigate } from 'react-router-dom';
 
 function Signup() {
     const [name, setName] = useState('');
@@ -14,36 +14,27 @@ function Signup() {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    // Handle input changes
-    const handleNameChange = (e) => setName(e.target.value);
-    const handleEmailChange = (e) => setEmail(e.target.value);
-    const handlePhoneChange = (e) => setPhone(e.target.value);
-    const handlePasswordChange = (e) => setPassword(e.target.value);
-    const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
-
-    // Handle form submission
     const handleSignup = (e) => {
         e.preventDefault();
 
-        // Validate password and confirm password
         if (password !== confirmPassword) {
             setError('Passwords do not match');
             return;
         }
 
         const signupData = {
-            username: name,
+            name: name,
             email,
             phone,
-            password,
-            role: 'ROLE_USER'
+            password
         };
 
         axios.post('http://localhost:8081/api/auth/register', signupData)
             .then((response) => {
-                if (response.data === 'User registered successfully!') {
+                if (response.status === 200) {
+                    alert('Signup successful: ' + JSON.stringify(response.data));
                     console.log('Signup successful:', response.data);
-                    navigate('/login');  // Redirect to login page after successful signup
+                    navigate('/loginpage');
                 } else {
                     setError('Signup failed. Please try again.');
                 }
@@ -56,60 +47,57 @@ function Signup() {
 
     return (
         <>
-        <Header />
-        <div className={styles.container}>
-            <div className={styles.LoginCard}>
-                <label>Name</label><br />
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Full Name"
-                    value={name}
-                    onChange={handleNameChange}
-                /><br />
-
-                <label>Email</label><br />
-                <input
-                    type="text"
-                    id="InputEmail"
-                    placeholder="Email"
-                    value={email}
-                    onChange={handleEmailChange}
-                /><br />
-
-                <label>Phone Number</label><br />
-                <input
-                    type="text"
-                    id="phonenumber"
-                    placeholder="Phone Number"
-                    value={phone}
-                    onChange={handlePhoneChange}
-                /><br />
-
-                <label>Password</label><br />
-                <input
-                    type="password"
-                    id="InputPass"
-                    placeholder="Password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                /><br />
-
-                <label>Confirm Password</label><br />
-                <input
-                    type="password"
-                    id="ConfirmPass"
-                    placeholder="Confirm Password"
-                    value={confirmPassword}
-                    onChange={handleConfirmPasswordChange}
-                /><br />
-
-                {error && <p style={{ color: 'red' }}>{error}</p>} {/* Show error message if any */}
-
-                <button onClick={handleSignup}>Sign up</button>
+            <Headernn />
+            <div className={styles.signupContainer}>
+                <div className={styles.signupCard}>
+                    <h2 className={styles.signupHeader}>Create an Account</h2>
+                    <form onSubmit={handleSignup} className={styles.signupForm}>
+                        <label className={styles.label}>Name</label>
+                        <input
+                            type="text"
+                            className={styles.input}
+                            placeholder="Full Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <label className={styles.label}>Email</label>
+                        <input
+                            type="email"
+                            className={styles.input}
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label className={styles.label}>Phone Number</label>
+                        <input
+                            type="tel"
+                            className={styles.input}
+                            placeholder="Phone Number"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                        />
+                        <label className={styles.label}>Password</label>
+                        <input
+                            type="password"
+                            className={styles.input}
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <label className={styles.label}>Confirm Password</label>
+                        <input
+                            type="password"
+                            className={styles.input}
+                            placeholder="Confirm Password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                        {error && <p className={styles.errorMessage}>{error}</p>}
+                        <button type="submit" className={styles.signupButton}>Sign Up</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <Footer />
+            <Footer />
         </>
     );
 }

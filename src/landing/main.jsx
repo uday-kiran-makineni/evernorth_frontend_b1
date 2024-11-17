@@ -13,14 +13,11 @@ import Footer from './Footer.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-    <Header/>
     <Hero/>
     <WhyChoose/>
     <FAQ/>
     <Plans/>
     <Subscription/>
     <Testimonials/>
-    <Footer/>
-  </StrictMode>,
+    </StrictMode>,
 )

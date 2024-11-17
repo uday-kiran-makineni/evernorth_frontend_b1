@@ -1,19 +1,13 @@
-import Header from './Header.jsx'
-import Footer from './Footer.jsx'
-import ExtraFooter from './ExtraFooter.jsx'
+import Header from './Header.jsx';
 import Chatbot from './chatbot.jsx';
 
 function Landing() {
-
   return (
-    <>
-    <Header/>
-    <Chatbot/>
-    {/* <ExtraFooter/> */}
-    <Footer/>
-    </>
-    );
+    <div style={{ backgroundColor: 'white', minHeight: '100vh', width: '100vw' }}>
+      <Header />
+      <Chatbot />
+    </div>
+  );
 };
 
-
-export default Landing
+export default Landing;

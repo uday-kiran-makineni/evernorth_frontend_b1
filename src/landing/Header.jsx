@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
+import Footer from '../login/Footer.jsx';
+import FeaturedSection from './FeaturedSection.jsx';
 import styles from './Header.module.css';
-import logo from './assets/nobglogo.png';  // Import your logo image
-import Hero from './Hero.jsx'
-import WhyChoose from './WhyChoose.jsx'
-import FAQ from './FAQ.jsx'
-import Plans from './Plans.jsx'
+import Headern from './Headern.jsx';
+import HealthServicesSection from './HealthServices.jsx';
+import Hero from './Hero.jsx';
 import Subscription from './Subscription.jsx'
 import Testimonials from './Testimonials.jsx'
 
@@ -20,35 +19,18 @@ const Header = () => {
     });
     return (
         <>
-        <header className={styles.header}>
-            <img src={logo} alt="MassMutual Logo" className={styles.logo} />  {/* Logo Image */}
-            <nav className={styles.nav}>
-                <ul className={styles.navLinks}>
-                    <li><a href="#Hero">Home</a></li>
-                    <li><a href="#WhyChoose">About Us</a></li>
-                    <li><a href="#Plans">Plans</a></li>
-                    <li><a href="#Contact">Contact</a></li>
-                    <li className={styles.Login}><Link to="/Login">Login</Link></li>              
-                </ul>
-            </nav>
-        </header>
-        <div id="Hero">
-            <Hero/>
+        <Headern/>
+        <div className={styles.testimonials}>
+            <Testimonials/>
         </div>
-        <div id="WhyChoose">
-        <WhyChoose/>
-        </div>
-        <FAQ/>
-        <div id="Plans">
-        <Plans/>
-        </div>
-        <Testimonials/>
+        <FeaturedSection/>
+        <HealthServicesSection/>
         <div id="Contact">
         <Subscription/>
         </div>
+        <Footer/>
         </>
     );
 };
 
 export default Header;
-
