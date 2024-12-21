@@ -52,7 +52,6 @@ const SecuritySettings = () => {
 
     return (
         <>
-        <Headernn/>
         <div className={styles.pageContainer}>
             <form onSubmit={handleSubmit} className={styles.securityForm}>
                 <h2>Account Security</h2>
@@ -108,7 +107,6 @@ const SecuritySettings = () => {
 
             {alertMessage && <div className={styles.alert}>{alertMessage}</div>}
         </div>
-        <Footer/>
         </>
     );
 };

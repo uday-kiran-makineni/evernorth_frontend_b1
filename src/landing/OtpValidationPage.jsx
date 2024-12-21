@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './OtpValidationPage.module.css';
 import { useNavigate } from 'react-router-dom';
+import Headerno from './Headerno';
+import Footer from '../login/Footer';
 
 const ValidateOtpPage = () => {
   const [otp, setOtp] = useState('');
@@ -57,6 +59,8 @@ const ValidateOtpPage = () => {
   };
 
   return (
+    <>
+    <Headerno/>
     <div className={styles.validateOtpContainer}>
       <div className={styles.validateOtpBox}>
         <h1>Validate OTP</h1>
@@ -79,6 +83,8 @@ const ValidateOtpPage = () => {
         {success && <p className={styles.successMessage}>{success}</p>}
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

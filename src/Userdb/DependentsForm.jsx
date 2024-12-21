@@ -67,7 +67,6 @@ const DependentsForm = () => {
 
     return (
       <>
-      <Headern/>
       <div className={styles.pageContainer}>
           <form onSubmit={handleSubmit} className={styles.dependentsForm}>
               <h2>Dependents Information</h2>
@@ -198,7 +197,6 @@ const DependentsForm = () => {
               </button>
           </form>
       </div>
-      <Footer/>
       </>
     );
 };

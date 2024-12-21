@@ -15,6 +15,7 @@ import Signup from './login/Signup.jsx';
 import UserSection from './landing/usersection.jsx';
 import OtpValidationPage from './landing/OtpValidationPage.jsx';
 import ValidateOtpPage from './landing/OtpValidationPage.jsx';
+import EditContactForm from './Userdb/ContactFormEdit.jsx';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/account-creation" element={<OtpVerification/>}/>
         <Route path="/user-db" element={<UserDB/>}/>
         <Route path="/contact-form" element={<ContactForm/>}/>
+        <Route path="/edit-contact-form" element={<EditContactForm/>}/>
         <Route path="/payment-form" element={<PaymentForm/>}/>
         <Route path="/address-form" element={<DeliveryAddressForm/>}/>
         <Route path="/health-conditions-form" element={<HealthConditionForm/>}/>

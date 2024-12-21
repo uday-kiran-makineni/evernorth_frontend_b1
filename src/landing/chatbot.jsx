@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './chatbot.css'; // Assuming your CSS file is named chatbot.css
 
-const MassMutualChatbot = () => {
+const Chatbot = () => {
     const [messages, setMessages] = useState([]);
     const [userInput, setUserInput] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,66 +30,14 @@ const MassMutualChatbot = () => {
         if (isLoggedIn) {
             switch (currentStep) {
                 case null:
-                    botResponse = "Hello there!, Here are our insurances. Please select your insurance type: Health,Life, Motor, Travel";
+                    botResponse = "Hello there!, Please enter your MembershipId for the better communication!!";
                     setCurrentStep("insuranceType");
                     break;
 
                 case "insuranceType":
-                    if (["health", "life", "motor", "travel"].includes(trimmedInput.toLowerCase())) {
-                        setSelectedPolicyType(trimmedInput);
-                        botResponse = "Please select your operation: View Your Policy, Buy new Policy, Update existing Policy";
-                        setCurrentStep("operation");
-                    } else {
-                        botResponse = "Invalid insurance type. Please select Health, Life, Motor, or Travel.";
-                    }
-                    break;
-
-                case "operation":
-                    if (["view your policy", "buy new policy", "update existing policy"].includes(trimmedInput.toLowerCase())) {
-                        setSelectedOperation(trimmedInput.toLowerCase());
-                        if (trimmedInput.toLowerCase() === "buy new policy") {
-                            botResponse = "Thanks for your interest. Our team will contact you shortly.";
-                            setCurrentStep(null); // End conversation
-                        } else {
-                            botResponse = "Please enter your Policy ID.";
-                            setCurrentStep("enterPolicyID");
-                        }
-                    } else {
-                        botResponse = "Invalid operation. Please select View Your Policy, Buy new Policy, or Update existing Policy.";
-                    }
-                    break;
-
-                case "enterPolicyID":
-                    if (validatePolicyID(trimmedInput)) {
-                        if (selectedOperation === "view your policy") {
-                            displayPolicyDetails();
-                            setCurrentStep(null); // End conversation after display
-                        } else if (selectedOperation === "update existing policy") {
-                            displayFullPolicyDetails();
-                            botResponse = "Which field would you like to update?";
-                            setCurrentStep("updateField");
-                        }
-                    } else {
-                        botResponse = "Invalid Policy ID. It should be 5 characters long and start with 'HP'.";
-                    }
-                    break;
-
-                case "updateField":
-                    const fieldsToUpdate = ["agent id", "email", "mobile number", "payment frequency", "sub policy type"];
-                    if (fieldsToUpdate.includes(trimmedInput.toLowerCase())) {
-                        botResponse = `Please enter new value for ${trimmedInput}.`;
-                        setCurrentStep("enterNewValue");
-                    } else {
-                        botResponse = `Invalid field. Please select one of the following to update: ${fieldsToUpdate.join(', ')}.`;
-                    }
-                    break;
-
-                case "enterNewValue":
-                    botResponse = "Details updated successfully!";
-                    displayUpdatedPolicyDetails(trimmedInput);
-                    setCurrentStep(null); // End conversation after update
-                    break;
-
+                    botResponse = "Here are your policy details!";
+                    displayPolicyDetails();
+                    setCurrentStep("operation");
                 default:
                     break;
             }
@@ -113,12 +61,9 @@ const MassMutualChatbot = () => {
 
     const displayPolicyDetails = () => {
         const policyDetails = `
-            Policy Status: Active<br>
-            Policy Type: ${capitalizeFirstLetter(selectedPolicyType)}<br>
-            Coverage Amount: $100,000<br>
-            Claim Limit: $20,000<br>
-            Start Date: 01-Jan-2022<br>
-            End Date: 01-Jan-2027
+            Username : Uday<br>
+            User Email : makineni.uday@gmail.com <br>
+            User Contact : 9391653036<br>
         `;
         addBotMessage(policyDetails);
     };
@@ -280,4 +225,4 @@ const MassMutualChatbot = () => {
     );
 };
 
-export default MassMutualChatbot;
+export default Chatbot;

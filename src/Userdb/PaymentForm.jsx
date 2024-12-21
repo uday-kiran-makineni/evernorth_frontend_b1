@@ -63,7 +63,6 @@ const PaymentForm = () => {
 
     return (
         <>
-        <Headernn/>
         <div className={styles.pageContainer}>
             <form onSubmit={handleSubmit} className={styles.paymentForm}>
                 <h2>Payment Methods</h2>
@@ -105,7 +104,6 @@ const PaymentForm = () => {
                 <button type="submit" className={styles.submitButton}>Submit Payment</button>
             </form>
         </div>
-        <Footer/>
         </>
     );
 };

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ContactForm.module.css';
 import axios from 'axios';
 import Headern from '../landing/Headern';
 import Headernn from '../landing/Headernn';
 import Footer from '../login/Footer';
 
-const ContactForm = ({ onSubmit }) => {
+const EditContactForm = () => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -22,6 +22,25 @@ const ContactForm = ({ onSubmit }) => {
 
     const [alertMessage, setAlertMessage] = useState('');
 
+    // Fetch the contact information on component mount
+    useEffect(() => {
+        const fetchContactInfo = async () => {
+            const membershipId = localStorage.getItem('membershipId');
+            if (membershipId) {
+                try {
+                    const response = await axios.get(`http://localhost:8081/api/auth/contact/${membershipId}`);
+                    if (response.data) {
+                        setFormData(response.data);
+                    }
+                } catch (error) {
+                    setAlertMessage('Error fetching contact information.');
+                }
+            }
+        };
+
+        fetchContactInfo();
+    }, []);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -30,32 +49,23 @@ const ContactForm = ({ onSubmit }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const membershipId = localStorage.getItem('membershipId');
-
+    
+        if (!membershipId) {
+            setAlertMessage('No membership ID found.');
+            return;
+        }
+    
         try {
-            const response = await axios.post('http://localhost:8081/api/auth/contact', {
-                ...formData,
-                membershipId
-            });
+            const response = await axios.put(`http://localhost:8081/api/auth/contact/${membershipId}`, formData);
+            
             if (response.status === 200) {
-                alert("form submitted successfully!!");
+                alert("Contact information updated successfully!");
                 localStorage.setItem('contactinformation', true);
-                onSubmit();  // Update the status after form submission
-                setFormData({
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    phone: '',
-                    address: '',
-                    city: '',
-                    state: '',
-                    zip: '',
-                    country: '',
-                    emergencyContactName: '',
-                    emergencyContactPhone: ''
-                });
+            } else {
+                setAlertMessage('Error updating contact information. Please try again.');
             }
         } catch (error) {
-            setAlertMessage('Error submitting form. Please try again.');
+            setAlertMessage('');
         }
     };
 
@@ -109,13 +119,12 @@ const ContactForm = ({ onSubmit }) => {
                     <label>Emergency Contact Phone:</label>
                     <input type="tel" name="emergencyContactPhone" value={formData.emergencyContactPhone} onChange={handleChange} required />
                 </div>
-
-                {alertMessage && <div className={styles.errorMessage}>{alertMessage}</div>}
                 <button type="submit" className={styles.submitButton}>Submit</button>
             </form>
+            {alertMessage && <p className={styles.alertMessage}>{alertMessage}</p>}
         </div>
         </>
     );
 };
 
-export default ContactForm;
+export default EditContactForm;

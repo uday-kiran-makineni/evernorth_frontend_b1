@@ -5,7 +5,9 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
+    padding-bottom: 60px;
+    padding-top: 60px;
 }
 
 .deliveryForm {
@@ -14,7 +16,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
 }
 
 h2 {

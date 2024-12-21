@@ -67,7 +67,6 @@ const DeliveryAddressForm = () => {
 
     return (
         <>
-        <Headernn/>
         <div className={styles.pageContainer}>
             <form onSubmit={handleSubmit} className={styles.deliveryForm}>
                 <h2>Delivery Address</h2>
@@ -142,7 +141,6 @@ const DeliveryAddressForm = () => {
                 <button type="submit" className={styles.submitButton}>Submit Address</button>
             </form>
         </div>
-        <Footer/>
         </>
     );
 };

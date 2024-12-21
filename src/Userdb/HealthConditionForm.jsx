@@ -68,7 +68,6 @@ const HealthConditionForm = () => {
 
     return (
         <>
-        <Headernn/>
         <div className={styles.pageContainer}>
             <form onSubmit={handleSubmit} className={styles.healthForm}>
                 <h2>Health Condition Information</h2>
@@ -151,7 +150,6 @@ const HealthConditionForm = () => {
                 <button type="submit" className={styles.submitButton}>Submit Health Information</button>
             </form>
         </div>
-        <Footer/>
         </>
     );
 };
