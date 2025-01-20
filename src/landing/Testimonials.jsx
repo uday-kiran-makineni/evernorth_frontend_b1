@@ -16,7 +16,7 @@ const Testimonials = () => {
       </div>
       <div style={styles.imageContainer}>
         <img 
-          src="https://res.cloudinary.com/dmdiia2yv/image/upload/v1731490878/family_together_u6w70h.avif" // Replace with the actual image URL or import statement
+          src="https://res.cloudinary.com/dmdiia2yv/image/upload/v1731490878/family_together_u6w70h.avif" 
           alt="Family smiling together"
           style={styles.image}
         />
