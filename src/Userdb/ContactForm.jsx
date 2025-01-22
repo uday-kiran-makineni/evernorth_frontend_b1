@@ -109,7 +109,6 @@ const ContactForm = ({ onSubmit }) => {
                     <label>Emergency Contact Phone:</label>
                     <input type="tel" name="emergencyContactPhone" value={formData.emergencyContactPhone} onChange={handleChange} required />
                 </div>
-
                 {alertMessage && <div className={styles.errorMessage}>{alertMessage}</div>}
                 <button type="submit" className={styles.submitButton}>Submit</button>
             </form>
