@@ -15,8 +15,6 @@ const Subscription = () => {
             setSuccess('');
             return;
         }
-
-        // Clear any previous error messages
         setError('');
 
         try {
