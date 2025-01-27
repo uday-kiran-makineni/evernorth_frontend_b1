@@ -5,12 +5,11 @@ import styles from './Subscription.module.css';
 const Subscription = () => {
     const [email, setEmail] = useState('');
     const [mobile, setMobile] = useState('');
-    const [dob, setDob] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
     const handleSubscribe = async () => {
-        if (!email || !mobile || !dob) {
+        if (!email || !mobile) {
             setError('All fields are required: email, mobile number, and date of birth.');
             setSuccess('');
             return;
@@ -18,14 +17,13 @@ const Subscription = () => {
         setError('');
 
         try {
-            const data = { email, phone: mobile, dob };
+            const data = { email, phone: mobile };
             const response = await axios.post('http://localhost:8081/api/auth/users', data);
 
             if (response.status === 200) {
                 setSuccess('Subscription successful! Please check your email for further steps.');
                 setEmail('');
                 setMobile('');
-                setDob('');
             }
         } catch (error) {
             setError('Failed to subscribe. Please try again.');
@@ -36,7 +34,7 @@ const Subscription = () => {
         <section className={styles.subscriptionContainer}>
             <div className={styles.contentWrapper}>
                 <div className={styles.formContainer}>
-                    <h2>Subscribe to Our Service</h2>
+                    <h2 className={styles.headpadding}>Subscribe to Our Service</h2>
                     <p className={styles.description}>
                         Stay updated with our latest updates and exclusive offers. Join us today!
                     </p>
@@ -52,13 +50,6 @@ const Subscription = () => {
                         placeholder="Enter your mobile number"
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
-                        className={styles.inputField}
-                    />
-                    <input
-                        type="date"
-                        placeholder="Enter your date of birth"
-                        value={dob}
-                        onChange={(e) => setDob(e.target.value)}
                         className={styles.inputField}
                     />
                     <button onClick={handleSubscribe} className={styles.subscribeButton}>

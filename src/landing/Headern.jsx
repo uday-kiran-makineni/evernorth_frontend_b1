@@ -20,14 +20,6 @@ function Headern() {
         <span style={styles.logoSubtitle}>Care Group</span>
       </div>
       <div style={styles.nav}>
-      <button 
-          style={styles.button} 
-          onClick={handleSignupClick}
-          onMouseOver={() => (styles.button.backgroundColor = styles.buttonHover.backgroundColor)}
-          onMouseOut={() => (styles.button.backgroundColor = '#1fb5a0')}
-        >
-          SignUp
-        </button>
         <button 
           style={styles.button} 
           onClick={handleLoginClick}

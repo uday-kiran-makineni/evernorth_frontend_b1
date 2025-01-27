@@ -3,7 +3,6 @@ import FeaturedSection from './FeaturedSection.jsx';
 import styles from './Header.module.css';
 import Headern from './Headern.jsx';
 import HealthServicesSection from './HealthServices.jsx';
-import Hero from './Hero.jsx';
 import Subscription from './Subscription.jsx'
 import Testimonials from './Testimonials.jsx'
 

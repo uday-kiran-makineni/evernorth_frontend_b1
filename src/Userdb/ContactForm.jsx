@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import styles from './ContactForm.module.css';
 import axios from 'axios';
-import Headern from '../landing/Headern';
-import Headernn from '../landing/Headernn';
-import Footer from '../login/Footer';
 
 const ContactForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
@@ -38,7 +35,6 @@ const ContactForm = ({ onSubmit }) => {
             });
             if (response.status === 200) {
                 alert("form submitted successfully!!");
-                localStorage.setItem('contactinformation', true);
                 onSubmit();  // Update the status after form submission
                 setFormData({
                     firstName: '',

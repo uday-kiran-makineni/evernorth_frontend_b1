@@ -29,7 +29,7 @@ const UserDB = () => {
                     const initialSections = [
                         { id: 1, title: 'Contact Information', description: 'Manage your personal contact information.', icon: <FaAddressCard />, completed: userData.contactInformation || false },
                         { id: 2, title: 'Payment Methods', description: 'Manage your saved payment methods securely.', icon: <FaCreditCard />, completed: userData.paymentInformation || false },
-                        { id: 3, title: 'Delivery Address', description: 'Set up your preferred delivery locations.', icon: <FaHome />, completed: userData.deliveryInformation || false },
+                        { id: 3, title: 'Delivery Address', description: 'Set up your preferred delivery locations.', icon: <FaHome />, completed: userData.deliveryAddressInformation || false },
                         { id: 4, title: 'Health Conditions', description: 'Update your health profile and relevant information.', icon: <FaHeartbeat />, completed: userData.healthInformation || false },
                         { id: 5, title: 'Add Dependents', description: 'Add dependents who are linked to your account.', icon: <FaUsers />, completed: userData.dependentInformation || false },
                         { id: 6, title: 'Security Settings', description: 'Manage your account passwords including 2FA.', icon: <FaLock />, completed: userData.securityInformation || false }
