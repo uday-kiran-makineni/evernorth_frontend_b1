@@ -25,7 +25,7 @@ const EditDeliveryAddressForm = () => {
                         setFormData(response.data);
                     }
                 } catch (error) {
-                    setAlertMessage('Error fetching contact information.');
+                    setAlertMessage('Error fetching Delivery Address information.');
                 }
             }
         };
@@ -51,9 +51,9 @@ const EditDeliveryAddressForm = () => {
             const response = await axios.put(`http://localhost:8081/api/auth/delivery/${membershipId}`, formData);
             
             if (response.status === 200) {
-                alert("Contact information updated successfully!");
+                alert("Delivery Address information updated successfully!");
             } else {
-                setAlertMessage('Error updating contact information. Please try again.');
+                setAlertMessage('Error updating Delivery Address information. Please try again.');
             }
         } catch (error) {
             setAlertMessage('');

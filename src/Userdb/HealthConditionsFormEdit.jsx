@@ -20,12 +20,12 @@ const EditHealthConditionsForm = () => {
             const membershipId = localStorage.getItem('membershipId');
             if (membershipId) {
                 try {
-                    const response = await axios.get(`http://localhost:8081/api/auth/healthconditions/${membershipId}`);
+                    const response = await axios.get(`http://localhost:8081/api/auth/healthConditions/${membershipId}`);
                     if (response.data) {
                         setFormData(response.data);
                     }
                 } catch (error) {
-                    setAlertMessage('Error fetching contact information.');
+                    setAlertMessage('Error fetching Health Conditions information.');
                 }
             }
         };
@@ -48,12 +48,12 @@ const EditHealthConditionsForm = () => {
         }
     
         try {
-            const response = await axios.put(`http://localhost:8081/api/auth/healthconditions/${membershipId}`, formData);
+            const response = await axios.put(`http://localhost:8081/api/auth/healthConditions/${membershipId}`, formData);
             
             if (response.status === 200) {
-                alert("Contact information updated successfully!");
+                alert("Health Conditions information updated successfully!");
             } else {
-                setAlertMessage('Error updating contact information. Please try again.');
+                setAlertMessage('Error updating Health Conditions information. Please try again.');
             }
         } catch (error) {
             setAlertMessage('');

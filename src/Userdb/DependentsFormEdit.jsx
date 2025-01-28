@@ -30,7 +30,7 @@ const EditDependentsForm = () => {
                         setFormData(response.data);
                     }
                 } catch (error) {
-                    setAlertMessage('Error fetching contact information.');
+                    setAlertMessage('Error fetching dependents information.');
                 }
             }
         };
@@ -56,9 +56,9 @@ const EditDependentsForm = () => {
             const response = await axios.put(`http://localhost:8081/api/auth/dependent/${membershipId}`, formData);
             
             if (response.status === 200) {
-                alert("Contact information updated successfully!");
+                alert("Dependents information updated successfully!");
             } else {
-                setAlertMessage('Error updating contact information. Please try again.');
+                setAlertMessage('Error updating dependents information. Please try again.');
             }
         } catch (error) {
             setAlertMessage('');
