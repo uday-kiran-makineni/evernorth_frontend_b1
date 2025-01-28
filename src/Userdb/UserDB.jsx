@@ -11,6 +11,11 @@ import HealthConditionForm from './HealthConditionForm';
 import DependentsForm from './DependentsForm';
 import SecuritySettings from './SecuritySettings';
 import EditContactForm from './ContactFormEdit';
+import EditPaymentsForm from './PaymentFormEdit';
+import EditDeliveryAddressForm from './DeliveryAddressFormEdit';
+import EditHealthConditionsForm from './HealthConditionsFormEdit';
+import EditDependentsForm from './DependentsFormEdit';
+import EditSecurityForm from './SecuritySettingsEdit';
 
 const UserDB = () => {
     const [sections, setSections] = useState([]);
@@ -27,12 +32,12 @@ const UserDB = () => {
                     const userData = response.data;
                     console.log(response.data);
                     const initialSections = [
-                        { id: 1, title: 'Contact Information', description: 'Manage your personal contact information.', icon: <FaAddressCard />, completed: userData.contactInformation || false },
-                        { id: 2, title: 'Payment Methods', description: 'Manage your saved payment methods securely.', icon: <FaCreditCard />, completed: userData.paymentInformation || false },
-                        { id: 3, title: 'Delivery Address', description: 'Set up your preferred delivery locations.', icon: <FaHome />, completed: userData.deliveryAddressInformation || false },
-                        { id: 4, title: 'Health Conditions', description: 'Update your health profile and relevant information.', icon: <FaHeartbeat />, completed: userData.healthInformation || false },
-                        { id: 5, title: 'Add Dependents', description: 'Add dependents who are linked to your account.', icon: <FaUsers />, completed: userData.dependentInformation || false },
-                        { id: 6, title: 'Security Settings', description: 'Manage your account passwords including 2FA.', icon: <FaLock />, completed: userData.securityInformation || false }
+                        { id: 1, title: 'Contact Information', icon: <FaAddressCard />, completed: userData.contactInformation || false },
+                        { id: 2, title: 'Payment Methods', icon: <FaCreditCard />, completed: userData.paymentInformation || false },
+                        { id: 3, title: 'Delivery Address', icon: <FaHome />, completed: userData.deliveryAddressInformation || false },
+                        { id: 4, title: 'Health Conditions', icon: <FaHeartbeat />, completed: userData.healthInformation || false },
+                        { id: 5, title: 'Add Dependents', icon: <FaUsers />, completed: userData.dependentInformation || false },
+                        { id: 6, title: 'Security Settings', icon: <FaLock />, completed: userData.securityInformation || false }
                     ];
                     setSections(initialSections);
                 })
@@ -59,14 +64,29 @@ const UserDB = () => {
                 }
                 return <ContactForm markAsCompleted={() => markSectionAsCompleted(1)} />;
             case 2:
+                if (sections[1]?.completed) {
+                    return <EditPaymentsForm />;
+                }
                 return <PaymentForm markAsCompleted={() => markSectionAsCompleted(2)} />;
             case 3:
+                if (sections[2]?.completed) {
+                    return <EditDeliveryAddressForm />;
+                }
                 return <DeliveryAddressForm markAsCompleted={() => markSectionAsCompleted(3)} />;
             case 4:
+                if (sections[3]?.completed) {
+                    return <EditHealthConditionsForm />;
+                }
                 return <HealthConditionForm markAsCompleted={() => markSectionAsCompleted(4)} />;
             case 5:
+                if (sections[4]?.completed) {
+                    return <EditDependentsForm />;
+                }
                 return <DependentsForm markAsCompleted={() => markSectionAsCompleted(5)} />;
             case 6:
+                if (sections[5]?.completed) {
+                    return <EditSecurityForm />;
+                }
                 return <SecuritySettings markAsCompleted={() => markSectionAsCompleted(6)} />;
             default:
                 return <ContactForm markAsCompleted={() => markSectionAsCompleted(1)} />;
@@ -87,16 +107,21 @@ const UserDB = () => {
                                 className={`${styles.tab} ${selectedTab === section.id ? styles.selectedTab : ''}`}
                                 onClick={() => setSelectedTab(section.id)}
                             >
-                                <div className={styles.iconContainer}>{section.icon}</div>
-                                <h3>{section.title}</h3>
-                                <p>{section.description}</p>
-                                <p className={styles.status}>Status: <span className={section.completed ? styles.statusCompleted : styles.statusUncompleted}>{section.completed ? 'Completed' : 'Uncompleted'}</span></p>
-                                <button
-                                    onClick={() => setSelectedTab(section.id)}
-                                    className={styles.dbbutton}
-                                >
-                                    {section.completed ? 'Edit Section' : 'Complete Section'}
-                                </button>
+                                <div className={styles.groupcont}>
+                                    <div className={styles.iconContainer}>{section.icon}</div>
+                                    <h3 className={styles.heading}>{section.title}</h3>
+                                </div>
+                                <div className={styles.status}>
+                                    <span className={section.completed ? styles.statusCompleted : styles.statusUncompleted}>
+                                        Status: {section.completed ? 'Completed' : 'Uncompleted'}
+                                    </span>
+                                    <button
+                                        onClick={() => setSelectedTab(section.id)}
+                                        className={styles.dbbutton}
+                                    >
+                                        {section.completed ? 'Edit Section' : 'Complete Section'}
+                                    </button>
+                                </div>
                             </div>
                         ))}
                     </div>

@@ -68,35 +68,35 @@ const EditPaymentsForm = () => {
                 <h2>payment Information</h2>
                 <div className={styles.formGroup}>
                     <label>Cardholder Name (Credit Card):</label>
-                    <input type="text" name="cardHolderName" value={paymentData.cardHolderName} onChange={handleChange} required />
+                    <input type="text" name="cardHolderName" value={formData.cardHolderName} onChange={handleChange} required />
                 </div>
                 <div className={styles.formGroup}>
                     <label>Card Number (Credit Card):</label>
-                    <input type="text" name="cardNumber" value={paymentData.cardNumber} onChange={handleChange} required />
+                    <input type="text" name="cardNumber" value={formData.cardNumber} onChange={handleChange} required />
                 </div>
                 <div className={styles.formGroup}>
                     <label>Expiration Date (Credit Card):</label>
-                    <input type="month" name="expirationDate" value={paymentData.expirationDate} onChange={handleChange} required />
+                    <input type="month" name="expirationDate" value={formData.expirationDate} onChange={handleChange} required />
                 </div>
                 <div className={styles.formGroup}>
                     <label>CVV (Credit Card):</label>
-                    <input type="text" name="cvv" value={paymentData.cvv} onChange={handleChange} required />
+                    <input type="text" name="cvv" value={formData.cvv} onChange={handleChange} required />
                 </div>
 
                 <h3>Debit Card Information</h3>
                 <div className={styles.formGroup}>
                     <label>Cardholder Name (Debit Card):</label>
-                    <input type="text" name="debitCardHolderName" value={paymentData.debitCardHolderName} onChange={handleChange} required />
+                    <input type="text" name="debitCardHolderName" value={formData.debitCardHolderName} onChange={handleChange} required />
                 </div>
                 <div className={styles.formGroup}>
                     <label>Card Number (Debit Card):</label>
-                    <input type="text" name="debitCardNumber" value={paymentData.debitCardNumber} onChange={handleChange} required />
+                    <input type="text" name="debitCardNumber" value={formData.debitCardNumber} onChange={handleChange} required />
                 </div>
 
                 <h3>UPI Information</h3>
                 <div className={styles.formGroup}>
                     <label>UPI ID:</label>
-                    <input type="text" name="upiId" value={paymentData.upiId} onChange={handleChange} required />
+                    <input type="text" name="upiId" value={formData.upiId} onChange={handleChange} required />
                 </div>
                 
                 <button type="submit" className={styles.submitButton}>Submit</button>

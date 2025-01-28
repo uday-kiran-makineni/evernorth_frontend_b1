@@ -68,7 +68,7 @@ const EditDependentsForm = () => {
     return (
         <>
         <div className={styles.pageContainer}>
-            <form onSubmit={handleSubmit} className={styles.contactForm}>
+            <form onSubmit={handleSubmit} className={styles.dependentsForm}>
                 <h2>Dependent Information</h2>
                  <div className={styles.formGroup}>
                     <label>Name:</label>
@@ -130,7 +130,7 @@ const EditDependentsForm = () => {
                     </select>
                 </div>
 
-                {dependent.chronicIllness === 'Yes' && (
+                {formData.chronicIllness === 'Yes' && (
                     <div className={styles.formGroup}>
                         <label>Details of Chronic Illness:</label>
                         <textarea

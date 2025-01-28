@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './DependentsForm.module.css';
+import styles from './HealthConditionForm.module.css';
 import axios from 'axios';
 
 const EditHealthConditionsForm = () => {
@@ -13,6 +13,7 @@ const EditHealthConditionsForm = () => {
     });
 
     const [alertMessage, setAlertMessage] = useState('');
+    const [errors, setErrors] = useState({});
 
     // Fetch the contact information on component mount
     useEffect(() => {
@@ -63,13 +64,13 @@ const EditHealthConditionsForm = () => {
     return (
         <>
         <div className={styles.pageContainer}>
-            <form onSubmit={handleSubmit} className={styles.contactForm}>
+            <form onSubmit={handleSubmit} className={styles.healthForm}>
                 <h2>Health Condition Information</h2>
                 <div className={styles.formGroup}>
                     <label>Do you have any chronic illness?</label>
                     <select
                         name="hasChronicIllness"
-                        value={healthData.hasChronicIllness}
+                        value={formData.hasChronicIllness}
                         onChange={handleChange}
                         required
                     >
@@ -80,12 +81,12 @@ const EditHealthConditionsForm = () => {
                     {errors.hasChronicIllness && <span className={styles.error}>{errors.hasChronicIllness}</span>}
                 </div>
 
-                {healthData.hasChronicIllness === 'Yes' && (
+                {formData.hasChronicIllness === 'Yes' && (
                     <div className={styles.formGroup}>
                         <label>Details of Chronic Illness:</label>
                         <textarea
                             name="chronicIllnessDetails"
-                            value={healthData.chronicIllnessDetails}
+                            value={formData.chronicIllnessDetails}
                             onChange={handleChange}
                             required
                         />
@@ -97,7 +98,7 @@ const EditHealthConditionsForm = () => {
                     <label>Do you have any allergies?</label>
                     <textarea
                         name="allergies"
-                        value={healthData.allergies}
+                        value={formData.allergies}
                         onChange={handleChange}
                         required
                     />
@@ -108,7 +109,7 @@ const EditHealthConditionsForm = () => {
                     <label>Are you currently taking any medications?</label>
                     <textarea
                         name="currentMedications"
-                        value={healthData.currentMedications}
+                        value={formData.currentMedications}
                         onChange={handleChange}
                         required
                     />
@@ -121,7 +122,7 @@ const EditHealthConditionsForm = () => {
                     <input
                         type="text"
                         name="emergencyContactName"
-                        value={healthData.emergencyContactName}
+                        value={formData.emergencyContactName}
                         onChange={handleChange}
                         required
                     />
@@ -133,7 +134,7 @@ const EditHealthConditionsForm = () => {
                     <input
                         type="tel"
                         name="emergencyContactPhone"
-                        value={healthData.emergencyContactPhone}
+                        value={formData.emergencyContactPhone}
                         onChange={handleChange}
                         required
                     />

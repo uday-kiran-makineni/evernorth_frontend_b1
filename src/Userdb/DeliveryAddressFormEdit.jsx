@@ -63,7 +63,7 @@ const EditDeliveryAddressForm = () => {
     return (
         <>
         <div className={styles.pageContainer}>
-            <form onSubmit={handleSubmit} className={styles.contactForm}>
+            <form onSubmit={handleSubmit} className={styles.deliveryForm}>
                 <h2>Delivery Address Information</h2>
                 <div className={styles.formGroup}>
                     <label>HomeNumber</label>

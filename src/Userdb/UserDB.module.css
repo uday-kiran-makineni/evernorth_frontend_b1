@@ -12,7 +12,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .logo {
@@ -48,7 +48,6 @@
     align-items: center;
     padding: 40px;
     background-color: #f7f9fc;
-    min-height: 100vh;
     margin-top: 70px;
 }
 
@@ -72,24 +71,30 @@
 }
 
 .tabsColumn {
-    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%; /* Adjusted width for 25% of total width */
     padding-right: 15px;
     border-right: 2px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    gap: 9px;
+    height: 80vh; 
 }
 
 .tab {
-    padding: 8px;
-    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(50% - 8px); /* Two sections per row with a gap */
+    padding: 6px;
+    height: 30vh;
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s;
-    min-height: 50px;
     font-size: 14px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .tab:hover {
@@ -102,15 +107,24 @@
     transform: translateY(-3px);
 }
 
+.groupcont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .iconContainer {
     font-size: 1.2rem;
     color: #495057;
-    margin-bottom: 5px;
+    margin-right: 8px;
 }
 
 .status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
     font-weight: bold;
-    margin: 5px 0;
 }
 
 .statusCompleted {
@@ -122,16 +136,14 @@
 }
 
 .dbbutton {
-    padding: 6px;
-    width: 100%;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 14px;
+    margin-left: 8px;
 }
 
 .dbbutton:hover {
@@ -144,8 +156,8 @@
 }
 
 .formContainer {
-    width: 65%;
-    padding-left: 20px;
+    width: 75%; /* Adjusted width for 75% of total width */
+    padding-left: 15px;
     display: flex;
     flex-direction: column;
 }
@@ -159,10 +171,6 @@
 
     .formContainer {
         width: 100%;
-    }
-
-    .dbcontainer {
-        padding: 20px;
     }
 
     .headerContent {
